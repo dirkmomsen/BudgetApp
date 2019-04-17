@@ -23,5 +23,7 @@ namespace BudgetApp.Dtos
         [Required]
         [DataType(DataType.Currency)]
         public decimal Value { get; set; }
+
+        public int BudgetId { get; set; }
     }
 }
