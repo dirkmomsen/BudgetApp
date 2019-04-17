@@ -10,7 +10,7 @@ namespace BudgetApp.Dtos
 {
     public class BudgetDto
     {
-        public byte Id { get; set; }
+        public int Id { get; set; }
 
         [StringLength(255)]
         public string Name { get; set; }
@@ -19,7 +19,7 @@ namespace BudgetApp.Dtos
 
         public DateTime DateTo { get; set; }
 
-        public IEnumerable<Item> Items { get; set; }
+        public IEnumerable<ItemDto> Items { get; set; }
 
         [StringLength(3)]
         public string Currency { get; set; }

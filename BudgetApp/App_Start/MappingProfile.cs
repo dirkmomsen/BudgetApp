@@ -15,10 +15,14 @@ namespace BudgetApp.App_Start
             // Model To Dto
             Mapper.CreateMap<Budget, BudgetDto>();
             Mapper.CreateMap<Item, ItemDto>();
+            Mapper.CreateMap<ItemType, ItemTypeDto>();
 
             // Dto To Model
-            Mapper.CreateMap<BudgetDto, Budget>();
-            Mapper.CreateMap<ItemDto, Item>();
+            Mapper.CreateMap<BudgetDto, Budget>()
+                .ForMember(b => b.Id, opt => opt.Ignore());
+            Mapper.CreateMap<ItemDto, Item>()
+                .ForMember(i => i.Id, opt => opt.Ignore());
+            Mapper.CreateMap<ItemTypeDto, ItemType>();
         }
     }
 }

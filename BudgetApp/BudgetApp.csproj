@@ -235,6 +235,7 @@
     <Compile Include="Controllers\MeController.cs" />
     <Compile Include="Dtos\BudgetDto.cs" />
     <Compile Include="Dtos\ItemDto.cs" />
+    <Compile Include="Dtos\ItemTypeDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

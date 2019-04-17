@@ -10,7 +10,7 @@ namespace BudgetApp.Dtos
     public class ItemDto
     {
         [Required]
-        public byte Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [StringLength(255)]
@@ -18,7 +18,7 @@ namespace BudgetApp.Dtos
 
         [Required]
         public byte ItemTypeId { get; set; }
-        public ItemType ItemType { get; set; }
+        public ItemTypeDto ItemType { get; set; }
 
         [Required]
         [DataType(DataType.Currency)]

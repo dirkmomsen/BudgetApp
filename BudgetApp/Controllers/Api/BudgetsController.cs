@@ -25,9 +25,11 @@ namespace BudgetApp.Controllers.Api
         [HttpGet]
         public IHttpActionResult GetBudgets()
         {
-            var budgets = _context.Budgets.ToList();
+            var budgetDtos = _context.Budgets
+                .ToList()
+                .Select(Mapper.Map<Budget, BudgetDto>);
 
-            return Ok(budgets);
+            return Ok(budgetDtos);
         }
 
         // GET A Budget by id
@@ -35,21 +37,33 @@ namespace BudgetApp.Controllers.Api
         [HttpGet]
         public IHttpActionResult GetBudget(int id)
         {
-            var budget = _context.Budgets.Single(b => b.Id == id);
+            var budget = _context.Budgets
+                .Include(b => b.Items)
+                .Include(b => b.Items.Select(i => i.ItemType))
+                .Single(b => b.Id == id);
 
-            return Ok(budget);
+            if (budget == null)
+                return NotFound();
+
+            return Ok(Mapper.Map<Budget, BudgetDto>(budget));
         }
 
         // create a new Budget
         // POST /Budgets
         [HttpPost]
-        public IHttpActionResult CreateBudget(Budget budget)
+        public IHttpActionResult CreateBudget(BudgetDto budgetDto)
         {
-            _context.Budgets.Add(budget);
+            if (!ModelState.IsValid)
+                return BadRequest();
 
+            var budget = Mapper.Map<BudgetDto, Budget>(budgetDto);
+
+            _context.Budgets.Add(budget);
             _context.SaveChanges();
 
-            return Created(new Uri(Request.RequestUri + "/" + budget.Id), budget);
+            budgetDto.Id = budget.Id;
+
+            return Created(new Uri(Request.RequestUri + "/" + budgetDto.Id), budgetDto);
         }
 
         // Edit an existing budget
