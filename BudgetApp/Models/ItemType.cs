@@ -4,7 +4,7 @@ namespace BudgetApp.Models
 {
     public class ItemType
     {
-        public int TypeId { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [StringLength(3)]

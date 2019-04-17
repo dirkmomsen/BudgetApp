@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using BudgetApp.Models;
 
-namespace BudgetApp.Models
+namespace BudgetApp.Dtos
 {
-    public class Budget
+    public class BudgetDto
     {
-        public int Id { get; set; }
+        public byte Id { get; set; }
 
         [StringLength(255)]
         public string Name { get; set; }
@@ -18,14 +19,9 @@ namespace BudgetApp.Models
 
         public DateTime DateTo { get; set; }
 
-        public ICollection<Item> Items { get; set; }
+        public IEnumerable<Item> Items { get; set; }
 
         [StringLength(3)]
         public string Currency { get; set; }
-
-        public Budget()
-        {
-            this.Items = new HashSet<Item>();
-        }
     }
 }

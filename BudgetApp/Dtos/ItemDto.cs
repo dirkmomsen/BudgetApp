@@ -1,27 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+using BudgetApp.Models;
 
-namespace BudgetApp.Models
+namespace BudgetApp.Dtos
 {
-    public class Item
+    public class ItemDto
     {
         [Required]
-        public int Id { get; set; }
+        public byte Id { get; set; }
 
         [Required]
         [StringLength(255)]
         public string Description { get; set; }
 
         [Required]
-        public int ItemTypeId { get; set; }
+        public byte ItemTypeId { get; set; }
         public ItemType ItemType { get; set; }
 
         [Required]
         [DataType(DataType.Currency)]
         public decimal Value { get; set; }
-
-        public int BudgetId { get; set; }
-        public Budget Budget { get; set; }
-
     }
 }
