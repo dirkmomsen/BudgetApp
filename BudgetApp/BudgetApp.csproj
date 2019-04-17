@@ -242,6 +242,10 @@
     <Compile Include="Migrations\201904171334372_Initial.Designer.cs">
       <DependentUpon>201904171334372_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904171346298_AddSeedDataToItemType.cs" />
+    <Compile Include="Migrations\201904171346298_AddSeedDataToItemType.Designer.cs">
+      <DependentUpon>201904171346298_AddSeedDataToItemType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Budget.cs" />
@@ -378,6 +382,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201904171334372_Initial.resx">
       <DependentUpon>201904171334372_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904171346298_AddSeedDataToItemType.resx">
+      <DependentUpon>201904171346298_AddSeedDataToItemType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

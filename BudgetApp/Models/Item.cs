@@ -21,7 +21,5 @@ namespace BudgetApp.Models
         public decimal Value { get; set; }
 
         public int BudgetId { get; set; }
-        public Budget Budget { get; set; }
-
     }
 }
