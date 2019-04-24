@@ -36,6 +36,8 @@ namespace BudgetApp.Controllers.Api
         }
 
         // Get specific Item for specific budget
+        // GET /Budgets/{budgetId}/Items/{id}
+        [HttpGet]
         public IHttpActionResult GetItem(int budgetId, int id)
         {
             var item = _context.Items
