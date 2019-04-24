@@ -109,6 +109,26 @@ namespace BudgetApp.Controllers.Api
             return Ok();
         }
 
+        // Delete an item from a budget
+        // DELETE /budgets/{budgetId}/items/{id}
+        [HttpDelete]
+        [Route("{id:int}")]
+        public IHttpActionResult DeleteItem(int budgetId, int id)
+        {
+            // Get item
+            var itemInDb = _context.Items.SingleOrDefault(i => i.Id == id && i.BudgetId == budgetId);
+
+            // Handle null.
+            if (itemInDb == null)
+                return NotFound();
+
+            // Delete item from Db and save
+            _context.Items.Remove(itemInDb);
+            _context.SaveChanges();
+
+            return Ok();
+        }
+
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
