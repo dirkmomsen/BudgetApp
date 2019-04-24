@@ -23,7 +23,7 @@ textarea {
     max-width: 280px;
 }
 
-/* Set padding to display errors that occur during databinding */
+/*/* Set padding to display errors that occur during databinding !1!
 .padding-error {
     padding-top: 20px;
 }
@@ -33,4 +33,4 @@ textarea {
         float: none;
         padding: 10px 15px;
     }
-}
+}*/

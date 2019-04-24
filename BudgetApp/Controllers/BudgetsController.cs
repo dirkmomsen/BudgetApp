@@ -11,6 +11,11 @@ namespace BudgetApp.Controllers
         // GET: Budgets
         public ActionResult Index()
         {
+            return View("List");
+        }
+
+        public ActionResult Edit(int id)
+        {
             return View();
         }
     }
