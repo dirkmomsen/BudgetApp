@@ -83,6 +83,32 @@ namespace BudgetApp.Controllers.Api
             return Created(new Uri(Request.RequestUri + "/" + itemDto.Id), itemDto);
         }
 
+        // Edit an existing item
+        // Put /Budgets/{budgetId}/Items/{id}
+        [HttpPut]
+        [Route("{id:int}")]
+        public IHttpActionResult EditItem(int budgetId, int id, ItemDto itemDto)
+        {
+            // Check if itemDto is valid
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            // Get item for specific id's.
+            var itemInDb = _context.Items.SingleOrDefault(i => i.Id == id && i.BudgetId == budgetId);
+
+            // Handle null.
+            if (itemInDb == null)
+            {
+                return NotFound();
+            }
+
+            // Map itemDto to item and save changes.
+            Mapper.Map(itemDto, itemInDb);
+            _context.SaveChanges();
+
+            return Ok();
+        }
+
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
