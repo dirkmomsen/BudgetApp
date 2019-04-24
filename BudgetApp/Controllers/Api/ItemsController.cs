@@ -38,7 +38,14 @@ namespace BudgetApp.Controllers.Api
         // Get specific Item for specific budget
         public IHttpActionResult GetItem(int budgetId, int id)
         {
-            var budget = _context.Budgets.
+            var item = _context.Items
+                .Include(i => i.ItemType)
+                .SingleOrDefault(i => i.Id == id && i.BudgetId == budgetId);
+
+            if (item == null)
+                return NotFound();
+
+            return Ok(Mapper.Map<Item, ItemDto>(item));
         }
     }
 }
